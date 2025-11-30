@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Сапёр</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Сапёр</h1>
+        </header>
+
+        <div id="start-screen" class="screen">
+            <div class="form-container">
+                <h2>Новая игра</h2>
+                <form id="new-game-form">
+                    <div class="form-group">
+                        <label for="player-name">Ваше имя (только английские буквы):</label>
+                        <input type="text" id="player-name" name="player-name" placeholder="Player" required pattern="[a-zA-Z\s]+">
+                    </div>
+                    <div class="form-group">
+                        <label for="rows">Количество строк:</label>
+                        <input type="number" id="rows" name="rows" value="9" min="1" max="30" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="cols">Количество столбцов:</label>
+                        <input type="number" id="cols" name="cols" value="9" min="1" max="30" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="mines">Количество мин:</label>
+                        <input type="number" id="mines" name="mines" value="10" min="1" required>
+                    </div>
+                    <button type="submit" class="btn btn-primary">Начать игру</button>
+                </form>
+                <div class="form-actions">
+                    <button id="show-list-btn" class="btn btn-secondary">Список игр</button>
+                </div>
+            </div>
+        </div>
+
+        <div id="game-screen" class="screen hidden">
+            <div class="game-header">
+                <div class="game-info">
+                    <div class="info-item">
+                        <span class="label">Игрок:</span>
+                        <span id="current-player" class="value"></span>
+                    </div>
+                    <div class="info-item">
+                        <span class="label">Открыто:</span>
+                        <span id="opened-cells" class="value">0</span>
+                    </div>
+                    <div class="info-item">
+                        <span class="label">Мины:</span>
+                        <span id="mines-count" class="value">0</span>
+                    </div>
+                    <div class="info-item">
+                        <span class="label">ID игры:</span>
+                        <span id="game-id" class="value">-</span>
+                    </div>
+                </div>
+                <div class="game-controls">
+                    <button id="new-game-btn" class="btn btn-primary">Новая игра</button>
+                    <button id="save-game-btn" class="btn btn-secondary">Сохранить</button>
+                    <button id="back-to-menu-btn" class="btn btn-secondary">В меню</button>
+                </div>
+            </div>
+            <div id="message-area" class="message-area"></div>
+            <div id="game-board-wrapper" style="text-align: center; width: 100%;">
+                <div id="game-board" class="game-board"></div>
+            </div>
+            <div id="game-status" class="game-status"></div>
+        </div>
+
+        <div id="list-screen" class="screen hidden">
+            <div class="list-container">
+                <h2>Список сохраненных игр</h2>
+                <button id="back-from-list-btn" class="btn btn-secondary">Назад</button>
+                <div id="games-list" class="games-list"></div>
+            </div>
+        </div>
+
+        <div id="replay-screen" class="screen hidden">
+            <div class="replay-container">
+                <h2>Воспроизведение игры #<span id="replay-game-id"></span></h2>
+                <div class="game-header">
+                    <div class="game-info">
+                        <div class="info-item">
+                            <span class="label">Игрок:</span>
+                            <span id="replay-player" class="value"></span>
+                        </div>
+                        <div class="info-item">
+                            <span class="label">Размер:</span>
+                            <span id="replay-size" class="value"></span>
+                        </div>
+                        <div class="info-item">
+                            <span class="label">Мины:</span>
+                            <span id="replay-mines" class="value"></span>
+                        </div>
+                        <div class="info-item">
+                            <span class="label">Статус:</span>
+                            <span id="replay-status" class="value"></span>
+                        </div>
+                    </div>
+                </div>
+                <div id="replay-board" class="game-board"></div>
+                <div id="replay-moves" class="moves-list"></div>
+                <button id="back-from-replay-btn" class="btn btn-secondary">Назад</button>
+            </div>
+        </div>
+    </div>
+
+    <script type="module" src="js/app.js"></script>
+</body>
+</html>
+
