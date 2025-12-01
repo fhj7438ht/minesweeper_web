@@ -43,6 +43,26 @@ export class Controller { // Контроллер для управления и
             this.showGameList();
         });
 
+        // Ссылка на список игр из начального экрана
+        document.getElementById('show-list-link-start').addEventListener('click', (e) => {
+            e.preventDefault();
+            this.showGameList();
+        });
+
+        // Ссылка на список игр из игрового экрана
+        document.getElementById('show-list-link').addEventListener('click', (e) => {
+            e.preventDefault();
+            this.showGameList();
+        });
+
+        // Ссылка на воспроизведение текущей игры
+        document.getElementById('replay-current-link').addEventListener('click', (e) => {
+            e.preventDefault();
+            if (this.currentGameId) {
+                this.replayGame(this.currentGameId);
+            }
+        });
+
         // Кнопка новой игры из игрового экрана
         document.getElementById('new-game-btn').addEventListener('click', () => {
             View.showStartScreen();
@@ -333,6 +353,14 @@ export class Controller { // Контроллер для управления и
         );
         
         View.showGameStatus(this.currentGame);
+        
+        // Показываем/скрываем ссылку на воспроизведение в зависимости от статуса игры
+        const replayLink = document.getElementById('replay-current-link');
+        if (this.currentGame && (this.currentGame.isGameOver() || this.currentGame.isGameWon())) {
+            replayLink.classList.remove('hidden');
+        } else {
+            replayLink.classList.add('hidden');
+        }
         
         // Переустанавливаем обработчики событий после обновления доски
         this.setupBoardEventListeners();

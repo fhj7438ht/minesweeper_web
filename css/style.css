@@ -169,6 +169,24 @@ header h1 {
     display: flex;
     gap: 5px;
     flex-wrap: wrap;
+    align-items: center;
+}
+
+.game-link {
+    color: #0000FF;
+    text-decoration: underline;
+    cursor: pointer;
+    font-size: 11px;
+    padding: 4px 8px;
+    margin: 2px;
+}
+
+.game-link:hover {
+    color: #000080;
+}
+
+.game-link.hidden {
+    display: none;
 }
 
 .message-area {
